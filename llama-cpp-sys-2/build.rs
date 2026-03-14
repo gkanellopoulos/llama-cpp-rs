@@ -527,7 +527,7 @@ fn main() {
     config.define("LLAMA_BUILD_TOOLS", "OFF");
     config.define("LLAMA_BUILD_COMMON", "ON");
     config.define("LLAMA_CURL", "OFF");
-    config.define("GGML_BACKEND_DL", "ON");
+    config.define("GGML_BACKEND_DL", if build_shared_libs { "ON" } else { "OFF" });
 
     // Pass CMAKE_ environment variables down to CMake
     for (key, value) in env::vars() {
