@@ -527,6 +527,7 @@ fn main() {
     config.define("LLAMA_BUILD_TOOLS", "OFF");
     config.define("LLAMA_BUILD_COMMON", "ON");
     config.define("LLAMA_CURL", "OFF");
+    config.define("GGML_BACKEND_DL", "ON");
 
     // Pass CMAKE_ environment variables down to CMake
     for (key, value) in env::vars() {
@@ -1075,7 +1076,7 @@ fn main() {
             let dst = target_dir.join(filename);
             debug_log!("HARD LINK {} TO {}", asset.display(), dst.display());
             if !dst.exists() {
-                std::fs::hard_link(asset.clone(), dst).unwrap();
+                std::fs::hard_link(asset.clone(), dst).ok();
             }
 
             // Copy DLLs to examples as well
@@ -1083,7 +1084,7 @@ fn main() {
                 let dst = target_dir.join("examples").join(filename);
                 debug_log!("HARD LINK {} TO {}", asset.display(), dst.display());
                 if !dst.exists() {
-                    std::fs::hard_link(asset.clone(), dst).unwrap();
+                    std::fs::hard_link(asset.clone(), dst).ok();
                 }
             }
 
@@ -1091,7 +1092,7 @@ fn main() {
             let dst = target_dir.join("deps").join(filename);
             debug_log!("HARD LINK {} TO {}", asset.display(), dst.display());
             if !dst.exists() {
-                std::fs::hard_link(asset.clone(), dst).unwrap();
+                std::fs::hard_link(asset.clone(), dst).ok();
             }
         }
     }
