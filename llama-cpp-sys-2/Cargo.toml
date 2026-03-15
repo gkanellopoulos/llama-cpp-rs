@@ -1,10 +1,10 @@
 [package]
-name = "llama-cpp-sys-2"
-description = "Low Level Bindings to llama.cpp"
+name = "mnemefusion-llama-cpp-sys-2"
+description = "Low Level Bindings to llama.cpp (MnemeFusion fork with build fixes)"
 version = "0.1.138"
 edition = "2021"
 license = "MIT OR Apache-2.0"
-repository = "https://github.com/utilityai/llama-cpp-rs"
+repository = "https://github.com/gkanellopoulos/llama-cpp-rs"
 links = "llama"
 
 include = [
